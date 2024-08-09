@@ -78,11 +78,6 @@ class RoverSearch(StateMachine):
             "%Y-%m-%d_%H:%M:%S"
         )
 
-        # Default output file for model
-        defaultModelFile = "/root/Results/ROVER_SEARCH_MODEL_%s.pickle" % datetime.datetime.now().strftime(
-            "%Y-%m-%d_%H:%M:%S"
-        )
-
         parser = ArgumentParser()
         parser.add_argument("--safety_checker_ip", help="ip of the safety checker server")
         parser.add_argument("--safety_checker_port", help="port of the safety checker server")
