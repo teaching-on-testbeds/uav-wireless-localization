@@ -143,6 +143,7 @@ class RoverSearch(StateMachine):
                         datetime.datetime.now() - self.start_time, # elapsed search time
                         self.measurement_list[-1]['lat'], # current position - latitude
                         self.measurement_list[-1]['lon'], # current position - longitude
+                        SEARCH_ALTITUDE,                  # altitude
                         self.measurement_list[-1]['power'], # measurement of received signal power at this position
                         self.best_pos.lat, # estimated best position - latitude
                         self.best_pos.lon, # estimated best position - longitude
