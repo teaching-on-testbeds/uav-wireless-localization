@@ -212,6 +212,11 @@ class RoverSearch(StateMachine):
         print(
             f"Best rover location estimate {self.best_pos.lat, self.best_pos.lon} with measurement {self.best_measurement} after {datetime.datetime.now()-self.start_time} minutes"
         )
+      
+        # save the final optimizer
+        with open("/root/Results/opt_final.pickle", 'wb') as handle:
+            pickle.dump(self.optimizer, handle)
+      
         # save the final model
         with open("/root/Results/gpr_fitted_model.pickle", 'wb') as handle:
             pickle.dump(self.optimizer._gp, handle)
