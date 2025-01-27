@@ -18,7 +18,7 @@ from aerpawlib.safetyChecker import SafetyCheckerClient
 from radio_power import RadioEmitter
 
 import numpy as np
-from bayes_opt import BayesianOptimization, UtilityFunction
+from bayes_opt import BayesianOptimization, acquisition
 from sklearn.gaussian_process.kernels import Matern, WhiteKernel, RBF
 
 BOUND_NE={'lat':35.73030799378120, 'lon':-78.69670002283071}
@@ -55,21 +55,23 @@ class RoverSearch(StateMachine):
     # start in the middle of the search space
     next_waypoint = {'lat': (MIN_LAT + MAX_LAT)/2, 'lon': (MIN_LON + MAX_LON)/2}
 
+    # change this utility function to manage the 
+    # exploration/exploitation tradeoff
+    utility = acquisition.UpperConfidenceBound(kappa=1)
+
     optimizer = BayesianOptimization(
       f=None,
       pbounds={'lat': (MIN_LAT, MAX_LAT), 'lon': (MIN_LON, MAX_LON)},
       verbose=0,
       random_state=0,
-      allow_duplicate_points=True
+      allow_duplicate_points=True,
+      acquisition_function = utility
     )
 
-    # change this utility function to manage the 
-    # exploration/exploitation tradeoff
-    utility = UtilityFunction(kind="ucb", kappa=1)
 
     # set the kernel
     kernel = RBF()
-    optimizer._gp.set_params(kernel = kernel, normalize_y=True)
+    optimizer._gp.set_params(kernel = kernel)
 
     def initialize_args(self, extra_args: List[str]):
         """Parse arguments passed to vehicle script"""
@@ -159,7 +161,7 @@ class RoverSearch(StateMachine):
     @state(name="suggest")
     async def suggest(self, vehicle: Drone):
         # suggest the next waypoint to visit
-        self.next_waypoint = self.optimizer.suggest(self.utility)
+        self.next_waypoint = self.optimizer.suggest()
 
         return "probe"
     
