@@ -55,9 +55,9 @@ class RoverSearch(StateMachine):
     # start in the middle of the search space
     next_waypoint = {'lat': (MIN_LAT + MAX_LAT)/2, 'lon': (MIN_LON + MAX_LON)/2}
 
-    # change this utility function to manage the 
+    # change this utility function or its arguments to manage the 
     # exploration/exploitation tradeoff
-    utility = acquisition.UpperConfidenceBound(kappa=1)
+    utility = acquisition.UpperConfidenceBound()
 
     optimizer = BayesianOptimization(
       f=None,
@@ -67,18 +67,16 @@ class RoverSearch(StateMachine):
       allow_duplicate_points=True,
       acquisition_function = utility
     )
-
-
     # set the kernel
     kernel = RBF()
     optimizer._gp.set_params(kernel = kernel)
 
     def initialize_args(self, extra_args: List[str]):
         """Parse arguments passed to vehicle script"""
-        # Default output CSV file for search data
-        defaultFile = "/root/Results/ROVER_SEARCH_DATA_%s.csv" % datetime.datetime.now().strftime(
-            "%Y-%m-%d_%H:%M:%S"
-        )
+        # current time string:
+        dt_str =  datetime.datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
+        # Default output files for search data
+        defaultFile = "/root/Results/ROVER_SEARCH_DATA_%s.csv" %  dt_str        
 
         parser = ArgumentParser()
         parser.add_argument("--safety_checker_ip", help="ip of the safety checker server")
@@ -108,6 +106,8 @@ class RoverSearch(StateMachine):
         self.log_file = open(args.log, "w+")
         self.save_csv = args.save_csv
         self.search_time = datetime.timedelta(minutes=args.search_time)
+
+        self.pickle_file_name = "/root/Results/opt_final_%s.pickle" % dt_str
 
         # Create a CSV writer object if we are saving data
         if self.save_csv:
@@ -214,12 +214,8 @@ class RoverSearch(StateMachine):
         )
       
         # save the final optimizer
-        with open("/root/Results/opt_final.pickle", 'wb') as handle:
+        with open(self.pickle_file_name, 'wb') as handle:
             pickle.dump(self.optimizer, handle)
-      
-        # save the final model
-        with open("/root/Results/gpr_fitted_model.pickle", 'wb') as handle:
-            pickle.dump(self.optimizer._gp, handle)
 
         # go home
         home_coords = Coordinate(
