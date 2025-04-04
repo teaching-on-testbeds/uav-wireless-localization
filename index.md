@@ -300,7 +300,7 @@ Even if you are not watching in QGroundControl, you will see in the
 2) is at the position we have set.
 
 
-<video width="800" controls autoplay muted loop>
+<video width="800" controls muted loop>
 <source src="https://teaching-on-testbeds.github.io/uav-wireless-localization/video/aerpaw_exp_console_an.mp4" type="video/mp4">
  Your browser does not support the video tag.
 </video>
@@ -334,7 +334,7 @@ You should also reset the virtual channel emulator in between runs - on
 ```
 
 
-<video width="800" controls autoplay muted loop>
+<video width="800" controls muted loop>
 <source src="https://teaching-on-testbeds.github.io/uav-wireless-localization/video/aerpaw_reset_experiment_an.mp4" type="video/mp4">
  Your browser does not support the video tag.
 </video>
@@ -429,7 +429,7 @@ finish, because the data files are only written at the end of the
 experiment.
 
 
-<video width="800" controls autoplay muted loop>
+<video width="800" controls muted loop>
 <source src="https://teaching-on-testbeds.github.io/uav-wireless-localization/video/aerpaw_start_experiment_an.mp4" type="video/mp4">
  Your browser does not support the video tag.
 </video>
