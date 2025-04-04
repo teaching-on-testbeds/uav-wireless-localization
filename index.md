@@ -93,8 +93,8 @@ latitude and longitude as the hikers.
 
 We will frame our machine learning problem as follows:
 
--   features $X$: latitude, longitude
--   target variable $y$: received signal strength
+-   features X: latitude, longitude
+-   target variable y: received signal strength
 
 In other words, given a coordinate (latitude and longitude) we want to
 predict the received signal strength at that location.
@@ -301,7 +301,7 @@ Even if you are not watching in QGroundControl, you will see in the
 
 
 <video width="1280" height="720" controls autoplay muted loop>
-<source src="uav_wireless_localization/video/aerpaw_exp_console_an.mp4" type="video/mp4">
+<source src="https://teaching-on-testbeds.github.io/uav_wireless_localization/video/aerpaw_exp_console_an.mp4" type="video/mp4">
  Your browser does not support the video tag.
 </video>
  
@@ -335,7 +335,7 @@ You should also reset the virtual channel emulator in between runs - on
 
 
 <video width="1280" height="720" controls autoplay muted loop>
-<source src="uav_wireless_localization/video/aerpaw_reset_experiment_an.mp4" type="video/mp4">
+<source src="https://teaching-on-testbeds.github.io/uav_wireless_localization/video/aerpaw_reset_experiment_an.mp4" type="video/mp4">
  Your browser does not support the video tag.
 </video>
  
@@ -430,7 +430,7 @@ experiment.
 
 
 <video width="1280" height="720" controls autoplay muted loop>
-<source src="uav_wireless_localization/video/aerpaw_start_experiment_an.mp4" type="video/mp4">
+<source src="https://teaching-on-testbeds.github.io/uav_wireless_localization/video/aerpaw_start_experiment_an.mp4" type="video/mp4">
  Your browser does not support the video tag.
 </video>
  
