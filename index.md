@@ -64,7 +64,7 @@ This experiment uses the Bayesian Optimization implementation of
 > global optimization tool for Python," 2014. Available:
 > <https://github.com/fmfn/BayesianOptimization>
 
-and, it deployed the model on he AERPAW testbed:
+and, it deploys a model on the AERPAW testbed:
 
 > V. Marojevic, I. Guvenc, R. Dutta, M. Sichitiu, and B. Floyd,
 > "Advanced Wireless for Unmanned Aerial Systems:5G Standardization,
@@ -300,7 +300,7 @@ Even if you are not watching in QGroundControl, you will see in the
 2) is at the position we have set.
 
 
-<video width="1280" height="720" controls autoplay muted loop>
+<video width="800" controls autoplay muted loop>
 <source src="https://teaching-on-testbeds.github.io/uav-wireless-localization/video/aerpaw_exp_console_an.mp4" type="video/mp4">
  Your browser does not support the video tag.
 </video>
@@ -334,7 +334,7 @@ You should also reset the virtual channel emulator in between runs - on
 ```
 
 
-<video width="1280" height="720" controls autoplay muted loop>
+<video width="800" controls autoplay muted loop>
 <source src="https://teaching-on-testbeds.github.io/uav-wireless-localization/video/aerpaw_reset_experiment_an.mp4" type="video/mp4">
  Your browser does not support the video tag.
 </video>
@@ -429,7 +429,7 @@ finish, because the data files are only written at the end of the
 experiment.
 
 
-<video width="1280" height="720" controls autoplay muted loop>
+<video width="800" controls autoplay muted loop>
 <source src="https://teaching-on-testbeds.github.io/uav-wireless-localization/video/aerpaw_start_experiment_an.mp4" type="video/mp4">
  Your browser does not support the video tag.
 </video>
